@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/superhero/bootstrap.min.css';
 
+import React from 'react';
 
-useState([]); // Mi lista esta vacia siendo un array
+function App() {
+
+  const [tasks, setTasks] = useState([]); // Mi lista esta vacia siendo un array
   const [newTask, setNewTask] = useState('');
 
   const handleInputChange = (event) => {
@@ -17,17 +18,13 @@ useState([]); // Mi lista esta vacia siendo un array
     if (newTask.trim() !== '') {
       setTasks([...tasks, newTask]);
       setNewTask('');
-
     }
   };
+
   const handleDeleteTask = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks.splice(index, 1);
     setTasks(updatedTasks);
-
-
-
-
   };
 
   return (
@@ -40,8 +37,8 @@ useState([]); // Mi lista esta vacia siendo un array
           <div class="input-group mb-3">
             <input value={newTask} onChange={handleInputChange} type="text" class="form-control" placeholder="Add task" aria-label="Recipient's username" aria-describedby="button-addon2"></input>
             <button type="button" class="btn btn-outline-success" onClick={handleAddTask}>Save</button>
-         </div>
-       </div>
+          </div>
+        </div>
         <div>
           {tasks.length > 0 && <div> <p class="text-primary"> List of task </p></div>}
           <ul>
@@ -58,4 +55,5 @@ useState([]); // Mi lista esta vacia siendo un array
     </>
   )
 }
+
 export default App
